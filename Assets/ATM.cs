@@ -9,7 +9,7 @@ public class ATM : MonoBehaviour
     [SerializeField] TextMeshProUGUI Coin_Balance_Txt;
     [SerializeField] TextMeshProUGUI Bank_Balance_Txt;
     [SerializeField] TMP_InputField Amount_Txt;
-    [SerializeField] int Coin_Balance = 1000;
+    public int Coin_Balance = 1000;
     public int Bank_Balance = 3000;
 
     private void Awake()

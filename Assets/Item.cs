@@ -9,7 +9,7 @@ public class Item : MonoBehaviour
     [SerializeField] RawImage Item_Image;
     public int Price;
     [SerializeField] Texture _texture;
-
+    [SerializeField] TMP_Dropdown dropdown;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +17,12 @@ public class Item : MonoBehaviour
         Item_Image.texture = _texture;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Buy()
     {
-        
+        Transactions.instance.Buy(transform);
+    }
+    public void Sell()
+    {
+        Transactions.instance.Sell(transform, dropdown.value);
     }
 }
