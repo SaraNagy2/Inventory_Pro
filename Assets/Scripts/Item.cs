@@ -10,6 +10,8 @@ public class Item : MonoBehaviour
     public int Price;
     [SerializeField] Texture _texture;
     [SerializeField] TMP_Dropdown dropdown;
+    [SerializeField] Button btn_buy;
+    [SerializeField] Button btn_sell;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +21,18 @@ public class Item : MonoBehaviour
 
     public void Buy()
     {
-        Transactions.instance.Buy(transform);
+        if (Transactions.instance.Buy(transform))
+        {
+            btn_buy.gameObject.SetActive(false);
+            btn_sell.gameObject.SetActive(true);
+            dropdown.gameObject.SetActive(true);
+        }
     }
     public void Sell()
     {
         Transactions.instance.Sell(transform, dropdown.value);
+        btn_buy.gameObject.SetActive(true);
+        btn_sell.gameObject.SetActive(false);
+        dropdown.gameObject.SetActive(false);
     }
 }

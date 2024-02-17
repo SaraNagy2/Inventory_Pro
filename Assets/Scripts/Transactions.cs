@@ -18,7 +18,7 @@ public class Transactions : MonoBehaviour
     }
 
 
-    public void Buy(Transform item)
+    public bool Buy(Transform item)
     {
         Item _item = item.GetComponent<Item>();
         if (ATM.instance.Coin_Balance - _item.Price >= 0)
@@ -26,7 +26,9 @@ public class Transactions : MonoBehaviour
             ATM.instance.Coin_Balance -= _item.Price;
             ATM.instance.SetBalance();
             item.SetParent(Content_MyItems);
+            return true;
         }
+        return false;
     }
     public void Sell(Transform item,int shopkeeperNum)
     {
